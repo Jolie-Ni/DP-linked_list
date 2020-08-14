@@ -3,15 +3,15 @@
 
 
 int main() {
-    vector<int> my_list{1,3,4,5,6};
+    vector<string> my_list{"one","two","three","five","six"};
     //vector<int> my_list;
-    Linked_List A = Linked_List(my_list);
+    Linked_List<string> A = Linked_List<string>(my_list);
     //add 2 following 1
-    A.Add_Node(2,1);
-    A.Delete_Node(2);
-    A.Delete_Node(6);
+    A.Add_Node("two","one");
+    A.Delete_Node("two");
+    A.Delete_Node("six");
     A.Print_List();
-    Linked_List B = Linked_List(A);
+    Linked_List<string> B = Linked_List<string>(A);
     B.Print_List();
     return 0;
 }
