@@ -11,9 +11,11 @@ using namespace std;
 
 class Linked_List {
 
-public:
-    //later could make this private
+private:
+
     List_Node* head_ptr;
+
+public:
 
     //default constructor
     Linked_List();
@@ -23,6 +25,13 @@ public:
 
     //copy constructor
     Linked_List(List_Node* ptr);
+
+    //get head
+    List_Node* Get_head();
+
+    //set head
+    void Set_head(List_Node* head);
+
 
     //insert function, future can check uniqueness
     void Add_Node(int value,int tar);

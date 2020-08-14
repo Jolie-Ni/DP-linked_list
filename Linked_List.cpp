@@ -22,8 +22,8 @@ Linked_List::Linked_List(vector<int> list){
             tra_ptr = head_ptr;
         }
         else{
-            tra_ptr->next = new_node;
-            tra_ptr = tra_ptr->next;
+            tra_ptr->Set_next(new_node);
+            tra_ptr = tra_ptr->Get_next();
         }
     }
 
@@ -36,19 +36,28 @@ Linked_List::Linked_List(List_Node* ptr){
     List_Node* tra_ptr = nullptr;
 
     while(ptr != nullptr){
-        List_Node* new_node = new List_Node(ptr->val);
+        List_Node* new_node = new List_Node(ptr->Get_val());
         if(head_ptr == nullptr){
             head_ptr = new_node;
             tra_ptr = head_ptr;
         }
         else{
-            tra_ptr->next = new_node;
-            tra_ptr = tra_ptr->next;
+            tra_ptr->Set_next(new_node);
+            tra_ptr = tra_ptr->Get_next();
         }
-        ptr = ptr->next;
+        ptr = ptr->Get_next();
     }
 }
 
+//get head
+List_Node* Linked_List::Get_head(){
+    return head_ptr;
+}
+
+//set head
+void Linked_List::Set_head(List_Node* head){
+    head_ptr = head;
+}
 
 //insert function, future can check uniqueness
 //list is empty
@@ -62,12 +71,12 @@ void Linked_List::Add_Node(int value,int tar){
         List_Node* new_node = new List_Node(value);
         if(ptr == nullptr){
             //insert at head when no previous found
-            new_node->next = head_ptr;
+            new_node->Set_next(head_ptr);
             head_ptr = new_node;
         }
         else {
-            new_node->next = ptr->next;
-            ptr->next = new_node;
+            new_node->Set_next(ptr->Get_next());
+            ptr->Set_next(new_node);
         }
     }
 }
@@ -76,8 +85,8 @@ void Linked_List::Add_Node(int value,int tar){
 List_Node* Linked_List::Find_Node(int value){
     List_Node* ptr = head_ptr;
     while(ptr != nullptr){
-        if(ptr->val != value){
-            ptr = ptr->next;
+        if(ptr->Get_val() != value){
+            ptr = ptr->Get_next();
         }
         else{
             break;
@@ -91,12 +100,12 @@ List_Node* Linked_List::Find_prev(List_Node* ptr){
     List_Node* prev = nullptr;
     List_Node* tra_ptr = head_ptr;
     while(tra_ptr != nullptr){
-        if(tra_ptr->next == ptr){
+        if(tra_ptr->Get_next() == ptr){
             prev = tra_ptr;
             break;
         }
         else{
-            tra_ptr = tra_ptr->next;
+            tra_ptr = tra_ptr->Get_next();
         }
     }
     return prev;
@@ -112,13 +121,13 @@ void Linked_List::Delete_Node(int value){
     if(ptr != nullptr){
         //if head to be deleted
         if(ptr == head_ptr){
-            head_ptr = head_ptr->next;
+            head_ptr = head_ptr->Get_next();
             delete ptr;
         }
         else{
             List_Node* prev = Find_prev(ptr);
-            prev->next = ptr->next;
-            ptr->next = nullptr;
+            prev->Set_next(ptr->Get_next());
+            ptr->Set_next(nullptr);
             delete ptr;
         }
     }
@@ -128,8 +137,8 @@ void Linked_List::Clear_All(){
 
     while(head_ptr != nullptr){
         List_Node* to_be_delete = head_ptr;
-        head_ptr = head_ptr->next;
-        to_be_delete->next = nullptr;
+        head_ptr = head_ptr->Get_next();
+        to_be_delete->Set_next(nullptr);
         delete to_be_delete;
     }
 }
@@ -143,8 +152,8 @@ void Linked_List::Print_List(){
     }
     else{
         while(ptr != nullptr){
-            cout << ptr->val << endl;
-            ptr = ptr->next;
+            cout << ptr->Get_val() << endl;
+            ptr = ptr->Get_next();
         }
     }
 }

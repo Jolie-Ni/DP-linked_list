@@ -8,10 +8,12 @@
 
 class List_Node {
 
-public:
-    //could make this private later on
+private:
     List_Node* next;
     int val;
+public:
+    //could make this private later on
+
 
     //default constructor
     List_Node();
@@ -21,6 +23,18 @@ public:
 
     //copy constructor
     List_Node(const List_Node &Node);
+
+    //get val
+    int Get_val();
+
+    //get next
+    List_Node* Get_next();
+
+    //set val
+    void Set_val(int value);
+
+    //set next
+    void Set_next(List_Node* n);
 
     //free memory
     ~List_Node();

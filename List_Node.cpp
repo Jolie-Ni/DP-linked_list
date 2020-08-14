@@ -22,6 +22,25 @@ List_Node::List_Node(const List_Node &Node){
     val = Node.val;
 }
 
+int List_Node::Get_val(){
+    return val;
+}
+
+//get next
+List_Node* List_Node::Get_next(){
+    return next;
+}
+
+//set val
+void List_Node::Set_val(int value){
+    val = value;
+}
+
+//set next
+void List_Node::Set_next(List_Node* n){
+    next = n;
+}
+
 //free memory
 List_Node::~List_Node(){
 }

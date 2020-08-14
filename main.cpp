@@ -11,7 +11,7 @@ int main() {
     A.Delete_Node(2);
     A.Delete_Node(6);
     A.Print_List();
-    A.Clear_All();
-    A.Print_List();
+    Linked_List B = Linked_List(A);
+    B.Print_List();
     return 0;
 }
